@@ -54,3 +54,35 @@ class Rectangle:
             raise ValueError("height must be >= 0")
         else:
             self.__height = value
+
+    def area(self):
+        """Computes and returns the area of the rectangle."""
+        return self.height * self.width
+
+    def perimeter(self):
+        """Computes and returns the perimeter of the rectangle."""
+        if any((self.height == 0, self.width == 0)):
+            return 0
+        return 2*(self.height + self.width)
+
+    def __str__(self) -> str:
+        """Draws the square.
+
+        Returns:
+            str: The square using #.
+        """
+        if any((self.width == 0, self.height == 0)):
+            return ""
+        return "\n".join(('#' * self.width) for _ in range(self.height))
+
+    def __repr__(self) -> str:
+        """eval() compatible representation of object
+
+        Returns:
+            str: String representation of object that can be used with eval()
+        """
+        return f"Rectangle({self.width}, {self.height})"
+
+    def __del__(self):
+        """Prints a message when an instance is deleted."""
+        print("Bye rectangle...")
